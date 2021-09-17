@@ -31,9 +31,11 @@ function DraggableModalInnerNonMemo({
     initialHeight,
     ...otherProps
 }: DraggableModalInnerProps) {
+    const { zIndex, x, y, width, height } = modalState
+
     // Call on mount and unmount.
     useEffect(() => {
-        dispatch({ type: 'mount', id, intialState: { initialWidth, initialHeight } })
+        dispatch({ type: 'mount', id, intialState: { initialWidth, initialHeight, initialX: x } })
         return () => dispatch({ type: 'unmount', id })
     }, [dispatch, id, initialWidth, initialHeight])
 
@@ -48,8 +50,6 @@ function DraggableModalInnerNonMemo({
             }
         }
     }, [visible, visiblePrevious, id, dispatch])
-
-    const { zIndex, x, y, width, height } = modalState
 
     const style: React.CSSProperties = useMemo(() => ({ ...modalStyle, top: y, left: x, height }), [
         y,

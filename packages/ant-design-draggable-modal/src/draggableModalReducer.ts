@@ -47,14 +47,17 @@ export const initialModalState: ModalState = {
 const getInitialModalState = ({
     initialWidth = initialModalState.width,
     initialHeight = initialModalState.height,
+    initialX = initialModalState.x,
 }: {
     initialWidth?: number
     initialHeight?: number
+    initialX?: number
 }) => {
     return {
         ...initialModalState,
         width: initialWidth,
         height: initialHeight,
+        x: initialX
     }
 }
 
@@ -63,7 +66,7 @@ export type Action =
     | { type: 'hide'; id: ModalID }
     | { type: 'focus'; id: ModalID }
     | { type: 'unmount'; id: ModalID }
-    | { type: 'mount'; id: ModalID; intialState: { initialWidth?: number; initialHeight?: number } }
+    | { type: 'mount'; id: ModalID; intialState: { initialWidth?: number; initialHeight?: number, initialX?: number } }
     | { type: 'windowResize'; size: { width: number; height: number } }
     | { type: 'drag'; id: ModalID; x: number; y: number }
     | {
@@ -233,7 +236,7 @@ export const draggableModalReducer = (state: ModalsState, action: Action): Modal
                     ...state.modals,
                     [action.id]: {
                         ...initialState,
-                        x: state.windowSize.width / 2 - initialState.width / 2,
+                        x: initialState.x !== null ? initialState.x : state.windowSize.width / 2 - initialState.width / 2,
                         y: state.windowSize.height / 2 - initialState.height / 2,
                         zIndex: state.maxZIndex + 1,
                     },
