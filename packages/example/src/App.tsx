@@ -4,9 +4,9 @@ import {
     DraggableModal,
     DraggableModalProvider,
     DraggableModalProps,
-} from 'ant-design-draggable-modal'
+} from '@ben-august/ant-design-draggable-modal'
 import 'antd/dist/antd.css'
-import 'ant-design-draggable-modal/dist/index.css'
+import '@ben-august/ant-design-draggable-modal/dist/index.css'
 
 const { Content, Footer } = Layout
 
@@ -18,7 +18,7 @@ function ModalWithButton(props: ModalWithButtonProps) {
     const [visible, setVisible] = useState(false)
     const onOk = useCallback(() => setVisible(true), [])
     const onCancel = useCallback(() => setVisible(false), [])
-    const onToggle = useCallback(() => setVisible(v => !v), [])
+    const onToggle = useCallback(() => setVisible((v) => !v), [])
     return (
         <>
             <Button onClick={onToggle} type={visible ? 'danger' : undefined} style={{ margin: 10 }}>
