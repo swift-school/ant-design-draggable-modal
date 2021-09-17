@@ -2,7 +2,7 @@
     "workspaces": [
         "packages/*"
     ],
-    "name": "@august/ant-design-draggable-modal",
+    "name": "@ben-august/ant-design-draggable-modal",
     "version": "1.0.0",
     "scripts": {
         "build": "wsrun --stages build",
