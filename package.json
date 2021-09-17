@@ -1,10 +1,9 @@
 {
-    "private": true,
     "workspaces": [
         "packages/*"
     ],
     "name": "@ben-august/ant-design-draggable-modal",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "scripts": {
         "build": "wsrun --stages build",
         "dev": "wsrun --exclude-missing dev",
